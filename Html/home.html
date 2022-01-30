@@ -4,161 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="home.css">
+  
     <title>Imgure</title>
-    <style>
-    *{
-        margin: 0;
-        padding: 0
-    }
- .nav-header{
-            background: #1D2250;
-  position: sticky;
-    top: 0;
-    position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding: 5px;
-        }
-.navbar{
-    display: flex;
-    justify-content: space-between;
   
-}
-.insideFirstDiv{
-    display: flex;
-    
-}
-.insideFirstDiv >p{
-    font-size: 24px;
-    margin: auto;
-    color: white;
-    margin-left:35px;
-    font-weight: 800;
-  
-}
-.nav-img{
-    max-width: 100px;
-    margin-left: 30px;
-    border-radius: 50%;
-    margin: 10px 0;
-}
-.secondDiv{
-    display: flex;
-     
-}
-.secondDiv > input{
-    width:50vw;
-    height: 5vh;
-    margin-top: 2vh;
-    background-color: #444468;
-    color: white;
-    font-size: 20px;
-    font-weight: 500;
-    
-}
-.secondDiv > button{
-    height: 5.3vh;
-    margin-top: 2.2vh;
-    background: #444468;
-    font-weight: 500;
-    
-}
-.secondDiv > button:hover{
-    background: red;
-}
-.insideThirdDiv{
-    display: flex;
-}
-.insideThirdDiv > p{
-    font-size: 24px;
-    color: white;
-    margin-top: 2.5vh;
-    margin-right:35px;
-    font-weight: 800;
-}
-.thirdImageDiv{
-    margin-top: 3vh;
-    margin-right:5wh;
-    
-    
-}
-.iconFilter{
-    height:2.3vh;
-    margin: auto;
-    margin-right: 0.5wh
-}
-.pause{
-    height:2vh;
-    margin: auto;
-    margin-right: 0.5wh
-}
-.setting{
-    height:2vh;
-    margin: auto;
-    background: white;
-    margin-right: 0.5wh
-}
-.partTwo{
-  
-   margin-left: 10wh;
-   margin-right: 10wh;
-   margin-top: 2vh;
-   border: 1px solid
-}
-.partTwoFirstChild{
-   display: flex;
-   justify-content: space-between; 
-   background: #AFD8DE;
-}
-.firstChild{
-    font-size:20px;
-    font-weight: 600;
-    margin-top:2vh;
-}
-.middleChild{
-    font-size:20px;
-    font-weight: 600;
-    color: #AFD8DE
-}
-
-.partTwo > div{
-    display: flex;
-    margin: auto;
-}
-.tenbox{
-    background:1px solid;
-    background-image: url("https://i.imgur.com/IkZeAAy_d.jpg?maxwidth=800&shape=thumb&fidelity=high")
-}
-.tenbox > img {
-  
-}
-#thirdPart{
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 10px;
-   background: #2E3134;
-   
-}
-.img-div{
-    border:1px solid rgba(255,255,255);
-  
-  
-}
-.img-div >img {
-    height: 40vh;
-    width:100%;
-   margin:auto;
-   object-fit: contain;
-   margin-top: 10px;
-}
-.img-div > p {
-    text-align: center;
-    font-size:20px;
-    font-weight: 600;
-    color: white;
-}
-
-    </style>
 </head>
 <body>
     <div class='container'>
@@ -173,7 +22,7 @@
 </div>
 </div>
 <div class="secondDiv">
-<input type="text" name="" id="" placeholder="Images,#tags,@users oh my!" >
+<input type="text" name="" id="query" placeholder="Images,#tags,@users oh my!"  oninput="debouncing(main,1000)" >
 <button class="btn ">search</button>
 </div>
 <div class='thirdDiv'>
@@ -202,7 +51,7 @@
 </div>
 <div>
 <div class="tenbox">
- Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, reiciendis!
+
 </div>
 <
 </div>
@@ -214,33 +63,9 @@
 <div id="thirdPart" >
 
 </div>
+
 <div id="debauncing"></div>
 </body>
 </html>
-<script>
-let thirdPart = document.getElementById("thirdPart");
-const GetimgData = async ()=>{
-    let res = await fetch("https://api.imgflip.com/get_memes")
-    let data = await res.json()
-    // console.log(data.data.memes)
-    showData(data.data.memes)
-}
-function showData(data){
-console.log(data)
-data.forEach((e)=>{
-  let imgDiv = document.createElement("div")
-imgDiv.setAttribute('class','img-div')
-  let img = document.createElement("img")
-    img.src= e.url
 
-    let text = document.createElement("p")
-    text.innerText=e.name
-    imgDiv.append(img,text)
-    
-    thirdPart.append(imgDiv)
-})
-
-}
-GetimgData();
-
-</script>
+<script src="script.js"  ></script>
